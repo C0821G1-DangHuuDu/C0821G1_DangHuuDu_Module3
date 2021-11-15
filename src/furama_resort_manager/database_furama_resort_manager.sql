@@ -35,6 +35,7 @@ CREATE TABLE `bo_phan` (
 
 LOCK TABLES `bo_phan` WRITE;
 /*!40000 ALTER TABLE `bo_phan` DISABLE KEYS */;
+INSERT INTO `bo_phan` VALUES (1,'Văn phòng'),(2,'Sales');
 /*!40000 ALTER TABLE `bo_phan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -301,6 +302,7 @@ CREATE TABLE `nhan_vien` (
 
 LOCK TABLES `nhan_vien` WRITE;
 /*!40000 ALTER TABLE `nhan_vien` DISABLE KEYS */;
+INSERT INTO `nhan_vien` VALUES (1,'Tôn Tằng Tôn Nữ Tạ Thị Mộng H','1990-09-19','205301590',5000000,'0905000111','H@gmail.com','Quảng Nam',1,3,1),(2,'Tống Mộng Mơ K','1993-10-20','205333555',8000000,'0905000222','k@gmail.com','Quảng Nam',2,1,1),(3,'Tao Là Tao','1995-11-20','205333666',10000000,'0905000333','tao@gmail.com','Quảng Nam',3,1,2),(4,'Hao Là Hao','1994-11-20','205333777',11000000,'0905000444','hao@gmail.com','Quảng Nam',3,2,2);
 /*!40000 ALTER TABLE `nhan_vien` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -324,6 +326,7 @@ CREATE TABLE `trinh_do` (
 
 LOCK TABLES `trinh_do` WRITE;
 /*!40000 ALTER TABLE `trinh_do` DISABLE KEYS */;
+INSERT INTO `trinh_do` VALUES (1,'Đại học'),(2,'Cao đẳng'),(3,'Sau Đại học');
 /*!40000 ALTER TABLE `trinh_do` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -347,6 +350,7 @@ CREATE TABLE `vi_tri` (
 
 LOCK TABLES `vi_tri` WRITE;
 /*!40000 ALTER TABLE `vi_tri` DISABLE KEYS */;
+INSERT INTO `vi_tri` VALUES (1,'Giám đốc'),(2,'Quản lý'),(3,'Nhân viên');
 /*!40000 ALTER TABLE `vi_tri` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -359,4 +363,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-12 17:41:06
+-- Dump completed on 2021-11-15 17:07:33
