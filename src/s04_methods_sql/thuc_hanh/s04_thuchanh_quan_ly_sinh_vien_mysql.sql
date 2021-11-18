@@ -26,4 +26,5 @@ from student s
 inner join mark m on s.student_id = m.student_student_id
 inner join `subject` sub on m.subject_sub_id = sub.sub_id
 group by s.student_id
-having max('Điểm TB');
+order by 'Điểm TB'
+limit 1;

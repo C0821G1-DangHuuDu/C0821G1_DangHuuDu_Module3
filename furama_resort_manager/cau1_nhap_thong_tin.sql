@@ -45,6 +45,8 @@ insert into khach_hang value (1,1,'Nguyễn Văn A','1989/09/19',1, '205301590',
 insert into khach_hang value (2,1,'Nguyễn Thị B','1989/09/19',0, '205111222','0905111222','b@gmail.com', 'Đà Nẵng');
 insert into khach_hang value (3,2,'David','1988/01/15',1, '205333111','0905333111','david@gmail.com', 'USA');
 insert into khach_hang value (4,2,'Mary','1981/03/17',0, '205222333','0905222333','mary@gmail.com', 'CAN');
+insert into khach_hang value (5,2,'Mary','1985/02/19',0, '205222444','0905222333','mary1@gmail.com', 'ENG');
+insert into khach_hang value (6,2,'David','1988/01/15',1, '205333111','0905333111','david@gmail.com', 'USA');
 
 -- Nhập dữ liệu vào bảng kiểu thuê:
 insert into kieu_thue value (1,'theo giờ',100);
@@ -103,12 +105,33 @@ left join hop_dong hd on hd.ma_khach_hang = kh.ma_khach_hang
 left join dich_vu dv on hd.ma_dich_vu = dv.ma_dich_vu;
 
 -- Task 6:
-select dv.ma_dich_vu,dv.ten_dich_vu,dv.dien_tich,dv.chi_phi_thue,ldv.ten_loai_dịch_vu
+select dv.ma_dich_vu,dv.ten_dich_vu,dv.dien_tich,dv.chi_phi_thue,ldv.ten_loai_dịch_vu,hd.ngay_lam_hop_dong
 from hop_dong hd
 left join dich_vu dv on hd.ma_dich_vu = dv.ma_dich_vu
 left join loai_dich_vu ldv on dv.ma_loai_dich_vu = ldv.ma_loai_dich_vu
-where 
+where not exists (select * 
+from hop_dong 
+where year(hd.ngay_lam_hop_dong) between 2019 and year(curdate()));
 
+
+-- Task 7:
+select dv.ma_dich_vu,dv.ten_dich_vu,dv.dien_tich,dv.chi_phi_thue,ldv.ten_loai_dịch_vu,hd.ngay_lam_hop_dong
+from hop_dong hd
+left join dich_vu dv on hd.ma_dich_vu = dv.ma_dich_vu
+left join loai_dich_vu ldv on dv.ma_loai_dich_vu = ldv.ma_loai_dich_vu
+where not exists (select * 
+from hop_dong 
+where year(hd.ngay_lam_hop_dong) between 2019 and year(curdate()));
+
+-- Task 8:
+-- Cách 1: 
+select distinct ho_ten
+from khach_hang;
+
+-- Task 9:
+
+
+ 
 
 -- SELECT *
 -- FROM nhan_vien 
