@@ -77,6 +77,23 @@ insert into hop_dong value (4,"2020/04/03 14:00:00","2020/04/04 12:00:00",20,15.
 insert into hop_dong value (5,"2020/07/20 14:00:00","2020/07/20 22:00:00",15,15.00,4,1,5);
 insert into hop_dong value (6,"2020/05/20 14:00:00","2020/06/20 12:00:00",20,100,5,4,6);
 
+-- Nhập dữ liệu vào bảng dịch vụ đi kèm:
+insert into dich_vu_di_kem value (1,'massage', 10, 1, 'sẵn sàng');
+insert into dich_vu_di_kem value (2,'karaoke', 20, 1, 'sẵn sàng');
+insert into dich_vu_di_kem value (3,'thức ăn', 10, 1, 'sẵn sàng');
+insert into dich_vu_di_kem value (4,'nước uống', 5, 1, 'sẵn sàng');
+insert into dich_vu_di_kem value (5,'thuê xe di chuyển tham quan resort', 10, 1, 'sẵn sàng');
+
+-- Nhập dữ liệu vào bảng hợp đồng chi tiết:
+insert into hop_dong_chi_tiet value (1,5,1, 3);
+insert into hop_dong_chi_tiet value (2,5,3, 2);
+insert into hop_dong_chi_tiet value (3,5,4, 3);
+insert into hop_dong_chi_tiet value (4,6,2, 1);
+insert into hop_dong_chi_tiet value (5,6,5, 2);
+insert into hop_dong_chi_tiet value (6,6,4, 4);
+
+
+
 
 -- Task 2:
 SELECT *
@@ -129,9 +146,26 @@ select distinct ho_ten
 from khach_hang;
 
 -- Task 9:
+select ldv.ten_loai_dịch_vu,dv.ten_dich_vu,hd.ngay_lam_hop_dong,hd.tong_tien,month(hd.ngay_lam_hop_dong) as 'Tháng',(hd.tong_tien) as 'Tổng doanh thu'
+from hop_dong hd
+inner join dich_vu dv on hd.ma_dich_vu = dv.ma_dich_vu
+inner join loai_dich_vu ldv on dv.ma_loai_dich_vu = ldv.ma_loai_dich_vu 
+where year(hd.ngay_lam_hop_dong)=2019
+group by month(hd.ngay_lam_hop_dong);
+
+-- Task 10:
+select hd.ma_hop_dong,hd.ngay_lam_hop_dong,hd.ngay_ket_thuc,hd.tien_dat_coc,sum(hdct.so_luong) as 'so_luong_dich_vu_di_kem'
+from hop_dong hd
+inner join hop_dong_chi_tiet hdct on hd.ma_hop_dong = hdct.ma_hop_dong
+inner join dich_vu_di_kem dvdk on hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
+group by hd.ma_hop_dong;
+
+-- Task 11:
 
 
- 
+
+
+
 
 -- SELECT *
 -- FROM nhan_vien 
