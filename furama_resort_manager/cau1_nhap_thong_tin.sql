@@ -288,6 +288,52 @@ union
 select ma_khach_hang,ho_ten,ngay_sinh,so_dien_thoai,email,dia_chi
 from khach_hang;
 
+-- Task 21:
+create view v_nhan_vien
+as
+select nv.ma_nhan_vien,nv.ho_va_ten,nv.ngay_sinh,nv.so_dien_thoai,nv.email,nv.dia_chi
+from nhan_vien nv
+inner join hop_dong hd on nv.ma_nhan_vien = hd.ma_nhan_vien
+where nv.dia_chi like '%Quảng Nam%' -- and hd.ngay_lam_hop_dong = '2019/12/12'
+group by nv.ma_nhan_vien;
+
+-- Task 22:
+SET SQL_SAFE_UPDATES=0;
+update nhan_vien set dia_chi = 'Đà Nẵng' where ma_nhan_vien in (select ma_nhan_vien from v_nhan_vien);
+SET SQL_SAFE_UPDATES=1;
+
+-- Task 23:
+delimiter //
+create procedure sp_xoa_khach_hang (ma_kh_xoa int)
+begin
+delete from khach_hang where ma_khach_hang = ma_kh_xoa;
+end;
+// delimiter ;
+
+-- Task 24: chưua kiểm tra được đầu vào
+delimiter //
+create procedure sp_them_moi_hop_dong (ma_hop_dong int,ngay_lam_hop_dong datetime,ngay_ket_thuc datetime,tien_dat_coc double,tong_tien double,ma_nhan_vien int,ma_khach_hang int,ma_dich_vu int)
+begin
+
+
+insert into hop_dong value (ma_hop_dong,ngay_lam_hop_dong,ngay_ket_thuc,tien_dat_coc,tong_tien,ma_nhan_vien,ma_khach_hang,ma_dich_vu); 
+
+end;
+
+
+// delimiter ;
+
+
+-- Task 25:
+delimiter //
+create trigger tr_xoa_hop_dong
+after delete
+on hop_dong for each row
+begin
+select count(ma_hop_dong) as so_hop_dong_con_lai
+from hop_dong;
+end;
+// delimiter ;
 
 
 -- SELECT *
