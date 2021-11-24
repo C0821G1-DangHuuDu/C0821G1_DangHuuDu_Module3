@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Tạo layout với RWD</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .col-1 {
+            width: 8.33%
+        }
+
+        .col-2 {
+            width: 16.66%
+        }
+
+        .col-3 {
+            width: 25%
+        }
+
+        .col-4 {
+            width: 33.33%
+        }
+
+        .col-5 {
+            width: 41.66%
+        }
+
+        .col-6 {
+            width: 50%
+        }
+
+        .col-7 {
+            width: 58.33%
+        }
+
+        .col-8 {
+            width: 66.66%
+        }
+
+        .col-9 {
+            width: 75%
+        }
+
+        .col-10 {
+            width: 83.33%
+        }
+
+        .col-11 {
+            width: 91.66%
+        }
+
+        .col-12 {
+            width: 100%
+        }
+
+        [class*="col-"] {
+            float: left;
+            padding: 5px;
+        }
+
+        .row::after {
+            clear: both;
+            content: "";
+            display: block;
+        }
+
+
+        @media only screen and (max-width: 786px) {
+            [class*=" col-"] {
+                width: 100%;
+            }
+        }
+
+        .header {
+            background-color: lightblue;
+            padding-left: 20px;
+            font-size: 20px;
+            font-family: SansSerif;
+        }
+
+        .body {
+            margin-top: 5px;
+            height: 500px;
+
+        }
+
+        .bottom {
+            text-align: center;
+            background-color: lightblue;
+            margin-top: 5px;
+            clear: both;
+        }
+        .body-left {
+            text-align: center;
+            background-color: aliceblue;
+            height: 500px;
+        }
+        .body-right {
+            text-align: center;
+            background-color: aliceblue;
+            height: 500px;
+        }
+        .ads-right {
+            margin: 5px 5px;
+            padding: 20px 40px;
+            border-style: solid;
+            border-color: #CDCDCD;
+        }
+    </style>
+</head>
+<body>
+<div class="row header">
+    <div class="col-1 ">
+        Logo
+    </div>
+    <div class="col-1">
+        Home
+    </div>
+    <div class="col-1">
+        About
+    </div>
+    <div class="col-1">
+        Projects
+    </div>
+    <div class="col-1">
+        Contact
+    </div>
+    <div class="col-6">
+
+    </div>
+    <div class="col-1">
+        Login
+    </div>
+</div>
+<div class="row body">
+    <div class="col-3 body-left">
+        <div class="row">
+            <div class="col-12">
+                Link
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                Link
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                Link
+            </div>
+        </div>
+    </div>
+    <div class="col-6 body-center">
+        <h1>WELCOME</h1>
+        <p>A welcome is a kind of greeting designed to introduce a person to a new place or situation, and to make them feel at ease. The term can similarly be used to describe the feeling of being accepted on the part of the new person.<br>
+
+            In some contexts, a welcome is extended to a stranger to an area or a household. "The concept of welcoming the stranger means intentionally building into the interaction those factors that make others feel that they belong, that they matter, and that you want to get to know them".[1] It is also noted, however, that "[i]n many community settings, being welcoming is viewed as in conflict with ensuring safety. Thus, welcoming becomes somewhat self-limited: 'We will be welcoming unless you do something unsafe'".[2] Different cultures have their own traditional forms of welcome,[3] and a variety of different practices can go into an effort to welcome:</p>
+    </div>
+    <div class="col-3 body-right">
+        <div class="row ads-right">
+            <div class="col-12">
+                ADS
+            </div>
+        </div>
+        <div class="row ads-right">
+            <div class="col-12">
+                ADS
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="row bottom">
+    <div class="col-12">
+        Footer Text
+    </div>
+</body>
+</html>
