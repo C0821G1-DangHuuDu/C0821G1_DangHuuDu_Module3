@@ -8,8 +8,8 @@ import java.io.IOException;
 @WebServlet(name = "DiscountServlet", urlPatterns = "/discount")
 public class DiscountServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        double price = Double.parseDouble("price");
-        double discount = Double.parseDouble("discountPercent");
+        double price = Double.parseDouble(request.getParameter("price"));
+        double discount = Double.parseDouble(request.getParameter("discountPercent"));
         double discountAmount = price*discount*0.01;
         double discountPrice = price*discount;
 
