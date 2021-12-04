@@ -314,13 +314,8 @@ end;
 delimiter //
 create procedure sp_them_moi_hop_dong (ma_hop_dong int,ngay_lam_hop_dong datetime,ngay_ket_thuc datetime,tien_dat_coc double,tong_tien double,ma_nhan_vien int,ma_khach_hang int,ma_dich_vu int)
 begin
-
-
 insert into hop_dong value (ma_hop_dong,ngay_lam_hop_dong,ngay_ket_thuc,tien_dat_coc,tong_tien,ma_nhan_vien,ma_khach_hang,ma_dich_vu); 
-
 end;
-
-
 // delimiter ;
 
 
@@ -334,6 +329,12 @@ select count(ma_hop_dong) as so_hop_dong_con_lai
 from hop_dong;
 end;
 // delimiter ;
+
+-- Task 26:
+
+
+
+
 
 
 -- SELECT *

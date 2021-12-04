@@ -98,24 +98,12 @@ public class ProductServlet extends HttpServlet {
                 request.getRequestDispatcher("/edit.jsp").forward(request,response);
                 break;
             case "delete":
-                int idDelete = Integer.parseInt(request.getParameter("id"));
-                String nameProductDelete = request.getParameter("nameProduct");
-                double priceProductDelete = Double.parseDouble(request.getParameter("priceProduct"));
-                String detailProductDelete = request.getParameter("detailProduct");
-                String factoryProductDelete = request.getParameter("factoryProduct");
-                Product productDelete = new Product(idDelete,nameProductDelete,priceProductDelete,detailProductDelete,factoryProductDelete);
-                productService.deleteProduct(productDelete);
-                loadListProduct(request,response);
+                deleteProduct(request,response);
+
                 break;
             case "view":
-                int idView = Integer.parseInt(request.getParameter("id"));
-                String nameProductView = request.getParameter("nameProduct");
-                double priceProductView = Double.parseDouble(request.getParameter("priceProduct"));
-                String detailProductView = request.getParameter("detailProduct");
-                String factoryProductView = request.getParameter("factoryProduct");
-                Product productView = new Product(idView,nameProductView,priceProductView,detailProductView,factoryProductView);
-                request.setAttribute("productView",productView);
-                request.getRequestDispatcher("/view.jsp").forward(request,response);
+                viewProduct(request,response);
+
                 break;
             case "search":
                 request.getRequestDispatcher("/search.jsp").forward(request,response);
@@ -124,6 +112,28 @@ public class ProductServlet extends HttpServlet {
                 loadListProduct(request,response);
                 break;
         }
+    }
+
+    private void viewProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int idView = Integer.parseInt(request.getParameter("id"));
+        String nameProductView = request.getParameter("nameProduct");
+        double priceProductView = Double.parseDouble(request.getParameter("priceProduct"));
+        String detailProductView = request.getParameter("detailProduct");
+        String factoryProductView = request.getParameter("factoryProduct");
+        Product productView = new Product(idView,nameProductView,priceProductView,detailProductView,factoryProductView);
+        request.setAttribute("productView",productView);
+        request.getRequestDispatcher("/view.jsp").forward(request,response);
+    }
+
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int idDelete = Integer.parseInt(request.getParameter("id"));
+        String nameProductDelete = request.getParameter("nameProduct");
+        double priceProductDelete = Double.parseDouble(request.getParameter("priceProduct"));
+        String detailProductDelete = request.getParameter("detailProduct");
+        String factoryProductDelete = request.getParameter("factoryProduct");
+        Product productDelete = new Product(idDelete,nameProductDelete,priceProductDelete,detailProductDelete,factoryProductDelete);
+        productService.deleteProduct(productDelete);
+        loadListProduct(request,response);
     }
 
     private void loadListProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
