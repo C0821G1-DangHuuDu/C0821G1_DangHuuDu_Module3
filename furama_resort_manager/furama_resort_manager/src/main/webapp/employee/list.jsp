@@ -27,6 +27,7 @@
         <th>Mã vị trí</th>
         <th>Mã ngành</th>
         <th>Mã bộ phận</th>
+        <th>Chức năng</th>
     </tr>
     <c:forEach var="employee" items="${employeeList}">
         <tr>
@@ -41,12 +42,16 @@
             <td><c:out value="${employee.positionId}" /></td>
             <td><c:out value="${employee.educationDegreeId}" /></td>
             <td><c:out value="${employee.divisionId}" /></td>
+            <td>
+                <a href="/employees?actionEmployee=edit&id=${employee.id}">
+                    <button>Sửa</button>
+            </td>
         </tr>
     </c:forEach>
 
 </table>
 <%--<c:out value="${msg}"/>--%>
-<%--<a href="/user?actionUser=search"><button>Search</button></a>--%>
+<a href="/employees?actionEmployee=create"><button>Thêm mới</button></a>
 <%--<a href="/user?actionUser=sort"><button>Sort</button></a>--%>
 </body>
 </html>

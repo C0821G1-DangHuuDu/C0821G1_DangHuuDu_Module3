@@ -41,4 +41,27 @@ public class EmployeeRepository implements IEmployeeRepository {
         }
         return employeeList;
     }
+
+    @Override
+    public void createNewEmployee(Employee employee) {
+        try {
+            PreparedStatement preparedStatement = BaseRepository.connection.prepareStatement("insert into nhan_vien value (?,?,?, ?,?,?,?, ?,?,?,?)");
+            preparedStatement.setString(1,employee.getId());
+            preparedStatement.setString(2,employee.getName());
+            preparedStatement.setString(3,employee.getBirthDay());
+            preparedStatement.setString(4,employee.getIdentityCard());
+            preparedStatement.setString(5, String.valueOf(employee.getSalary()));
+            preparedStatement.setString(6,employee.getPhoneNumber());
+            preparedStatement.setString(7,employee.getEmail());
+            preparedStatement.setString(8,employee.getAddress());
+            preparedStatement.setString(9,employee.getPositionId());
+            preparedStatement.setString(10,employee.getEducationDegreeId());
+            preparedStatement.setString(11,employee.getDivisionId());
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 }

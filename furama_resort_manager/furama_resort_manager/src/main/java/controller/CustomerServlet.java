@@ -1,5 +1,6 @@
 package controller;
 
+import model.Customer;
 import service.ICustomerService;
 import service.imp.CustomerService;
 
@@ -19,11 +20,11 @@ public class CustomerServlet extends HttpServlet {
             actionCustomer = "";
         }
         switch (actionCustomer) {
-            case "search":
-                request.getRequestDispatcher("/user_view/search.jsp").forward(request,response);
+            case "create":
+                createNewCustomer(request,response);
                 break;
-            case "sort":
-
+            case "edit":
+                editCustomer(request,response);
                 break;
             default:
                 loadListCustomer(request,response);
@@ -32,17 +33,58 @@ public class CustomerServlet extends HttpServlet {
         }
     }
 
+    private void editCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
+        String name = request.getParameter("nameCustomer");
+        String birthday = request.getParameter("birthday");
+        int gender = Integer.parseInt(request.getParameter("gender"));
+        String identityCard = request.getParameter("identityCard");
+        String phoneNumber = request.getParameter("phoneNumber");
+        String email = request.getParameter("email");
+        String address = request.getParameter("address");
+        String typeId = request.getParameter("typeId");
+
+        Customer customer = new Customer(id,name,birthday,address,identityCard,phoneNumber,email,gender,typeId);
+
+        customerService.editCustomer(customer);
+        loadListCustomer(request,response);
+
+    }
+
+    private void createNewCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
+        String name = request.getParameter("nameCustomer");
+        String birthday = request.getParameter("birthday");
+        int gender = Integer.parseInt(request.getParameter("gender"));
+        String identityCard = request.getParameter("identityCard");
+        String phoneNumber = request.getParameter("phoneNumber");
+        String email = request.getParameter("email");
+        String address = request.getParameter("address");
+        String typeId = request.getParameter("typeId");
+
+        Customer customer = new Customer(id,name,birthday,address,identityCard,phoneNumber,email,gender,typeId);
+
+        customerService.createNewCustomer(customer);
+        loadListCustomer(request,response);
+    }
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String actionCustomer = request.getParameter("actionCustomer");
         if (actionCustomer == null) {
             actionCustomer = "";
         }
         switch (actionCustomer) {
-            case "show":
-
+            case "create":
+                request.getRequestDispatcher("/customer/create.jsp").forward(request,response);
                 break;
-            case "sort":
-
+            case "edit":
+                String id = request.getParameter("id");
+                for (Customer customer:customerService.loadListCustomer()){
+                    if (customer.getId().equals(id)){
+                        request.setAttribute("customer",customer);
+                    }
+                }
+                request.getRequestDispatcher("/customer/edit.jsp").forward(request,response);
                 break;
             default:
                 loadListCustomer(request,response);

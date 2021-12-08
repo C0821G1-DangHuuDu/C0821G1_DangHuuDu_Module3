@@ -25,6 +25,7 @@
         <th>Email</th>
         <th>Địa chỉ</th>
         <th>Mã loại khách</th>
+        <th>Chức năng</th>
     </tr>
     <c:forEach var="customer" items="${customerList}">
         <tr>
@@ -48,12 +49,17 @@
             <td><c:out value="${customer.email}" /></td>
             <td><c:out value="${customer.address}" /></td>
             <td><c:out value="${customer.typeId}" /></td>
+            <td>
+                <a href="/customers?actionCustomer=edit&id=${customer.id}">
+                <button>Sửa</button>
+            </a>
+            </td>
         </tr>
     </c:forEach>
 
 </table>
 <%--<c:out value="${msg}"/>--%>
-<%--<a href="/user?actionUser=search"><button>Search</button></a>--%>
-<%--<a href="/user?actionUser=sort"><button>Sort</button></a>--%>
+<a href="/customers?actionCustomer=create"><button>Thêm mới</button></a>
+<%--<a href="/customers?actionUser=sort"><button>Sort</button></a>--%>
 </body>
 </html>

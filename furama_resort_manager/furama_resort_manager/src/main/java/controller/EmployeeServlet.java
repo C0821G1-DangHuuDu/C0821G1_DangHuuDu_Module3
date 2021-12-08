@@ -1,5 +1,7 @@
 package controller;
 
+import model.Customer;
+import model.Employee;
 import repository.IEmployeeRepository;
 import service.IEmployeeService;
 import service.imp.EmployeeService;
@@ -20,8 +22,8 @@ public class EmployeeServlet extends HttpServlet {
             actionEmployee = "";
         }
         switch (actionEmployee) {
-            case "search":
-                request.getRequestDispatcher("/user_view/search.jsp").forward(request,response);
+            case "create":
+                createNewEmployee(request,response);
                 break;
             case "sort":
 
@@ -33,14 +35,33 @@ public class EmployeeServlet extends HttpServlet {
         }
     }
 
+    private void createNewEmployee(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
+        String name = request.getParameter("name");
+        String birthday = request.getParameter("birthday");
+        String identityCard = request.getParameter("identityCard");
+        String phoneNumber = request.getParameter("phoneNumber");
+        String email = request.getParameter("email");
+        String address = request.getParameter("address");
+        double salary = Double.parseDouble(request.getParameter("salary"));
+        String positionId = request.getParameter("positionId");
+        String educationDegreeId = request.getParameter("educationDegreeId");
+        String divisionId = request.getParameter("divisionId");
+
+        Employee employee = new Employee(id,name,birthday,address,identityCard,phoneNumber,email,salary,positionId,educationDegreeId,divisionId);
+
+        employeeService.createNewEmployee(employee);
+        loadListEmployee(request,response);
+    }
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String actionEmployee = request.getParameter("actionEmployee");
         if (actionEmployee == null) {
             actionEmployee = "";
         }
         switch (actionEmployee) {
-            case "show":
-
+            case "create":
+                request.getRequestDispatcher("/employee/create.jsp").forward(request,response);
                 break;
             case "sort":
 

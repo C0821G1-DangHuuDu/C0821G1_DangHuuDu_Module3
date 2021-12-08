@@ -6,4 +6,8 @@ import java.util.List;
 
 public interface ICustomerRepository {
     List<Customer> loadListCustomer();
+
+    void createNewCustomer(Customer customer);
+
+    void editCustomer(Customer customer);
 }

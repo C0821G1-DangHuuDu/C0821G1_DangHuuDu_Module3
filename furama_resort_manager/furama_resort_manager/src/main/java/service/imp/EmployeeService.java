@@ -17,4 +17,9 @@ public class EmployeeService implements IEmployeeService {
 
         return employeeList;
     }
+
+    @Override
+    public void createNewEmployee(Employee employee) {
+        employeeRepository.createNewEmployee(employee);
+    }
 }

@@ -16,4 +16,14 @@ public class CustomerService implements ICustomerService {
         customerList = customerRepository.loadListCustomer();
         return customerList;
     }
+
+    @Override
+    public void createNewCustomer(Customer customer) {
+        customerRepository.createNewCustomer(customer);
+    }
+
+    @Override
+    public void editCustomer(Customer customer) {
+        customerRepository.editCustomer(customer);
+    }
 }

@@ -13,7 +13,7 @@
 <body>
 <h1>Tạo mới sản phẩm</h1>
 <form action="/products" method="post">
-    <input type="hidden" name="actionProduct" value="create">
+    <input type="hidden" name="actionCustomer" value="create">
 <table>
     <tr>
         <td>Nhập mã SP: </td>

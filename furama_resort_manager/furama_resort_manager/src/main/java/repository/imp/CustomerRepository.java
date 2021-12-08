@@ -39,4 +39,57 @@ public class CustomerRepository implements ICustomerRepository {
         }
         return customerList;
     }
+
+    @Override
+    public void createNewCustomer(Customer customer) {
+        try {
+            PreparedStatement preparedStatement = BaseRepository.connection.prepareStatement("insert into khach_hang value (?,?,?,?,?, ?,?,?,?)");
+            preparedStatement.setString(1,customer.getId());
+            preparedStatement.setString(2,customer.getTypeId());
+            preparedStatement.setString(3,customer.getName());
+            preparedStatement.setString(4,customer.getBirthDay());
+            if (customer.getGender()==1){
+                preparedStatement.setBoolean(5,true);
+            }else{
+                preparedStatement.setBoolean(5,false);
+            }
+
+            preparedStatement.setString(6, customer.getIdentityCard());
+            preparedStatement.setString(7, customer.getPhoneNumber());
+            preparedStatement.setString(8, customer.getEmail());
+            preparedStatement.setString(9, customer.getAddress());
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    @Override
+    public void editCustomer(Customer customer) {
+        try {
+            PreparedStatement preparedStatement = BaseRepository.connection.prepareStatement("update khach_hang set ma_loai_khach = ?, ho_ten=?,ngay_sinh=?,gioi_tinh=?,so_cmnd=?,so_dien_thoai=?,email=?,dia_chi=? where ma_khach_hang = ?");
+
+            preparedStatement.setString(1,customer.getTypeId());
+            preparedStatement.setString(2,customer.getName());
+            preparedStatement.setString(3,customer.getBirthDay());
+            if (customer.getGender()==1){
+                preparedStatement.setBoolean(4,true);
+            }else{
+                preparedStatement.setBoolean(4,false);
+            }
+
+            preparedStatement.setString(5, customer.getIdentityCard());
+            preparedStatement.setString(6, customer.getPhoneNumber());
+            preparedStatement.setString(7, customer.getEmail());
+            preparedStatement.setString(8, customer.getAddress());
+            preparedStatement.setString(9,customer.getId());
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 }
