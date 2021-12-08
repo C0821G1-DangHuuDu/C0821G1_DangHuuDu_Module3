@@ -78,3 +78,12 @@ BEGIN
     END$$
 
 DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE display_user()
+    select * from users
+    
+$$ DELIMITER ;
+
+call display_user;

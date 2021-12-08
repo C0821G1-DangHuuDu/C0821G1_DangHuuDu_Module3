@@ -4,7 +4,6 @@ public abstract class Person {
     private String id;
     private String name;
     private String birthDay;
-    private String gender;
     private String identityCard;
     private String phoneNumber;
     private String email;
@@ -13,11 +12,10 @@ public abstract class Person {
     public Person() {
     }
 
-    public Person(String id, String name, String birthDay, String gender, String identityCard, String phoneNumber, String email, String address) {
+    public Person(String id, String name, String birthDay, String identityCard, String phoneNumber, String email, String address) {
         this.id = id;
         this.name = name;
         this.birthDay = birthDay;
-        this.gender = gender;
         this.identityCard = identityCard;
         this.phoneNumber = phoneNumber;
         this.email = email;
@@ -54,14 +52,6 @@ public abstract class Person {
 
     public void setBirthDay(String birthDay) {
         this.birthDay = birthDay;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
     }
 
     public String getIdentityCard() {

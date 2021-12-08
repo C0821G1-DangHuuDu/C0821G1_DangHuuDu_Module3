@@ -5,28 +5,20 @@ public class Employee extends Person{
     private String positionId;
     private String educationDegreeId;
     private String divisionId;
-    private String username;
 
 
     public Employee() {
     }
 
-    public Employee(String id, String name, String birthDay, String gender, String identityCard, String phoneNumber, String email, String address, double salary, String positionId, String educationDegreeId, String divisionId, String username) {
-        super(id, name, birthDay, gender, identityCard, phoneNumber, email, address);
+    public Employee(String id, String name, String birthDay, String identityCard, String phoneNumber, String email, String address, double salary, String positionId, String educationDegreeId, String divisionId) {
+        super(id, name, birthDay, identityCard, phoneNumber, email, address);
         this.salary = salary;
         this.positionId = positionId;
         this.educationDegreeId = educationDegreeId;
         this.divisionId = divisionId;
-        this.username = username;
+
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public double getSalary() {
         return salary;

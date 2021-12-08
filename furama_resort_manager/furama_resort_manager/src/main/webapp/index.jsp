@@ -140,8 +140,8 @@
   <div class="row menu">
     <div class="col-8 menu-left">
       <span class="menu-title">Home</span>
-      <span class="menu-title">Employee</span>
-      <span class="menu-title">Customer</span>
+      <a href="/employees?actionEmployee=''"><span class="menu-title">Employee</span></a>
+      <a href="/customers?actionCustomer=''"><span class="menu-title">Customer</span></a>
       <span class="menu-title">Service</span>
       <span class="menu-title">Contract</span>
     </div>
