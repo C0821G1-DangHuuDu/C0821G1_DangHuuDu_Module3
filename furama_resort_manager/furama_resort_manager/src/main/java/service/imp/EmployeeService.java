@@ -22,4 +22,14 @@ public class EmployeeService implements IEmployeeService {
     public void createNewEmployee(Employee employee) {
         employeeRepository.createNewEmployee(employee);
     }
+
+    @Override
+    public void editEmployee(Employee employee) {
+        employeeRepository.editEmployee(employee);
+    }
+
+    @Override
+    public void deleteEmployee(Employee employee) {
+        employeeRepository.deleteEmployee(employee);
+    }
 }

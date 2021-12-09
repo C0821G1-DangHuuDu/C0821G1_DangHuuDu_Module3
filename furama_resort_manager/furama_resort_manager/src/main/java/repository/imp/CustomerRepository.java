@@ -92,4 +92,17 @@ public class CustomerRepository implements ICustomerRepository {
             throwables.printStackTrace();
         }
     }
+
+    @Override
+    public void deleteCustomer(Customer customer) {
+        try {
+            PreparedStatement preparedStatement = BaseRepository.connection.prepareStatement("delete from khach_hang where ma_khach_hang=?");
+            preparedStatement.setString(1,customer.getId());
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 }

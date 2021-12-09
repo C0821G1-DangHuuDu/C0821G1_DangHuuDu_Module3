@@ -86,11 +86,25 @@ public class CustomerServlet extends HttpServlet {
                 }
                 request.getRequestDispatcher("/customer/edit.jsp").forward(request,response);
                 break;
+            case "delete":
+                deleteCustomer(request,response);
+                break;
             default:
                 loadListCustomer(request,response);
                 break;
 
         }
+    }
+
+    private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
+        for (Customer customer:customerService.loadListCustomer()){
+            if (customer.getId().equals(id)){
+                customerService.deleteCustomer(customer);
+            }
+        }
+        loadListCustomer(request,response);
+
     }
 
     private void loadListCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

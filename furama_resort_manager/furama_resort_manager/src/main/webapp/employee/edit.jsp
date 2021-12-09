@@ -9,75 +9,59 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Chỉnh sửa thông tin khách hàng</title>
+    <title>Chỉnh sửa thông tin nhân viên</title>
 </head>
 <body>
-<h1>Chỉnh sửa thông tin khách hàng:</h1>
-<h3>Thông tin khách hàng cần chỉnh sửa: </h3>
+<h1>Chỉnh sửa thông tin nhân viên:</h1>
+<h3>Thông tin nhân viên cần chỉnh sửa: </h3>
 <table border="1">
     <tr>
-        <th>Mã Khách hàng</th>
-        <th>Tên Khách hàng</th>
+        <th>Mã Nhân viên</th>
+        <th>Tên Nhân viên</th>
         <th>Ngày sinh</th>
-        <th>Giới tính</th>
         <th>Giấy tờ tuỳ thân</th>
         <th>Số điện thoại</th>
         <th>Email</th>
         <th>Địa chỉ</th>
-        <th>Mã loại khách</th>
+        <th>Lương</th>
+        <th>Mã vị trí</th>
+        <th>Mã ngành</th>
+        <th>Mã bộ phận</th>
     </tr>
     <tr>
-        <td><c:out value="${customer.id}" /></td>
-        <td><c:out value="${customer.name}" /></td>
-        <td><c:out value="${customer.birthDay}" /></td>
-
-        <td>
-            <c:choose>
-                <c:when test="${customer.gender==0}" >
-                    <p>Nữ</p>
-                </c:when>
-                <c:otherwise>
-                    <p>Nam</p>
-                </c:otherwise>
-            </c:choose>
-
-        </td>
-        <td><c:out value="${customer.identityCard}" /></td>
-        <td><c:out value="${customer.phoneNumber}" /></td>
-        <td><c:out value="${customer.email}" /></td>
-        <td><c:out value="${customer.address}" /></td>
-        <td><c:out value="${customer.typeId}" /></td>
+        <td><c:out value="${employee.id}" /></td>
+        <td><c:out value="${employee.name}" /></td>
+        <td><c:out value="${employee.birthDay}" /></td>
+        <td><c:out value="${employee.identityCard}" /></td>
+        <td><c:out value="${employee.phoneNumber}" /></td>
+        <td><c:out value="${employee.email}" /></td>
+        <td><c:out value="${employee.address}" /></td>
+        <td><c:out value="${employee.salary}" /></td>
+        <td><c:out value="${employee.positionId}" /></td>
+        <td><c:out value="${employee.educationDegreeId}" /></td>
+        <td><c:out value="${employee.divisionId}" /></td>
     </tr>
 </table>
-<h3>Nhập thông tin sản phẩm cần chỉnh sửa:</h3>
-<form action="/customers" method="post">
-    <input type="hidden" name="actionCustomer" value="edit">
+<h3>Nhập thông tin nhân viên cần chỉnh sửa:</h3>
+<form action="/employees" method="post">
+    <input type="hidden" name="actionEmployee" value="edit">
     <table>
         <tr>
-            <td>Mã KH: </td>
+            <td>Mã nhân viên: </td>
             <td>
                 <input type="text" name="id">
             </td>
         </tr>
         <tr>
-            <td>Tên KH: </td>
+            <td>Tên Nhân viên: </td>
             <td>
-                <input type="text" name="nameCustomer">
+                <input type="text" name="name">
             </td>
         </tr>
         <tr>
             <td>Ngày sinh: </td>
             <td>
                 <input type="text" name="birthday">
-            </td>
-        </tr>
-        <tr>
-            <td>Giới tính: </td>
-            <td>
-                <input type="radio" id="nam" name="gender" value="1">
-                <label for="nam">Nam</label>
-                <input type="radio" id="nu" name="gender" value="0">
-                <label for="nu">Nữ</label>
             </td>
         </tr>
         <tr>
@@ -105,9 +89,27 @@
             </td>
         </tr>
         <tr>
-            <td>Loại khách hàng: </td>
+            <td>Lương: </td>
             <td>
-                <input type="text" name="typeId">
+                <input type="text" name="salary">
+            </td>
+        </tr>
+        <tr>
+            <td>Mã vị trí: </td>
+            <td>
+                <input type="text" name="positionId">
+            </td>
+        </tr>
+        <tr>
+            <td>Mã trình độ: </td>
+            <td>
+                <input type="text" name="educationDegreeId">
+            </td>
+        </tr>
+        <tr>
+            <td>Mã bộ phận: </td>
+            <td>
+                <input type="text" name="divisionId">
             </td>
         </tr>
         <tr>

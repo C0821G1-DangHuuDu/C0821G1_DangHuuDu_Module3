@@ -53,6 +53,9 @@
                 <a href="/customers?actionCustomer=edit&id=${customer.id}">
                 <button>Sửa</button>
             </a>
+                <a href="/customers?actionCustomer=delete&id=${customer.id}" onclick="return confirm('Are you sure you want to delete this item?')">
+                    <button>Xoá</button>
+                </a>
             </td>
         </tr>
     </c:forEach>

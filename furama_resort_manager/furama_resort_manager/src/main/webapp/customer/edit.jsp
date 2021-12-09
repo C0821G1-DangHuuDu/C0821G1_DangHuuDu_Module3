@@ -49,7 +49,7 @@
         <td><c:out value="${customer.typeId}" /></td>
     </tr>
 </table>
-<h3>Nhập thông tin sản phẩm cần chỉnh sửa:</h3>
+<h3>Nhập thông tin Khách hàng cần chỉnh sửa:</h3>
 <form action="/customers" method="post">
     <input type="hidden" name="actionCustomer" value="edit">
     <table>

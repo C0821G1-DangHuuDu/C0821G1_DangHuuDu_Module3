@@ -10,4 +10,6 @@ public interface ICustomerService {
     void createNewCustomer(Customer customer);
 
     void editCustomer(Customer customer);
+
+    void deleteCustomer(Customer customer);
 }

@@ -64,4 +64,41 @@ public class EmployeeRepository implements IEmployeeRepository {
             throwables.printStackTrace();
         }
     }
+
+    @Override
+    public void editEmployee(Employee employee) {
+        try {
+            PreparedStatement preparedStatement = BaseRepository.connection.prepareStatement("update nhan_vien set ho_va_ten = ?, ngay_sinh=?,so_cmnd=?,luong=?,so_dien_thoai =?,email=?,dia_chi=?,ma_vi_tri=?,ma_trinh_do=?,ma_bo_phan=? where ma_nhan_vien = ?");
+
+            preparedStatement.setString(1,employee.getName());
+            preparedStatement.setString(2,employee.getBirthDay());
+            preparedStatement.setString(3,employee.getIdentityCard());
+            preparedStatement.setString(4, String.valueOf(employee.getSalary()));
+            preparedStatement.setString(5,employee.getPhoneNumber());
+            preparedStatement.setString(6,employee.getEmail());
+            preparedStatement.setString(7,employee.getAddress());
+            preparedStatement.setString(8,employee.getPositionId());
+            preparedStatement.setString(9,employee.getEducationDegreeId());
+            preparedStatement.setString(10,employee.getDivisionId());
+            preparedStatement.setString(11,employee.getId());
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteEmployee(Employee employee) {
+        try {
+            PreparedStatement preparedStatement=BaseRepository.connection.prepareStatement("delete from nhan_vien where ma_nhan_vien=?");
+            preparedStatement.setString(1,employee.getId());
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
 }

@@ -45,6 +45,10 @@
             <td>
                 <a href="/employees?actionEmployee=edit&id=${employee.id}">
                     <button>Sửa</button>
+                </a>
+                <a href="/employees?actionEmployee=delete&id=${employee.id}" onclick="return confirm('Are you sure you want to delete this item?')">
+                    <button>Xoá</button>
+                </a>
             </td>
         </tr>
     </c:forEach>
@@ -55,3 +59,8 @@
 <%--<a href="/user?actionUser=sort"><button>Sort</button></a>--%>
 </body>
 </html>
+<%--<script>--%>
+<%--    function deleteEmployee() {--%>
+<%--        confirm("Bạn có muốn xoá Nhân viên này không?")--%>
+<%--    }--%>
+<%--</script>--%>
